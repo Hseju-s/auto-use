@@ -2,7 +2,7 @@
   "files": {
     "index.js": "835de1eae8c085c0885d589c1b706a209dc8ab920a48a070e6363aef8c0e1c68",
     "README.md": "893115937714cf101b6c04948114e45448cb3db33af5c78d4cc3d338fc52512a",
-    "skills.json": "7b472c4973f5b1e0a14d0a0ce465aa378d6a7c726122e9572507001384037f2e"
+    "skills.json": {"overwrite": false, "hash": "7b472c4973f5b1e0a14d0a0ce465aa378d6a7c726122e9572507001384037f2e"}
   },
    "defs": {
 	  "C_USE_ITEM": 3,
