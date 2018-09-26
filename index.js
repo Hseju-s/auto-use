@@ -23,7 +23,8 @@ let enabled = true,
 	},
 	useBroochOn,
 	useRootBeerOn,
-	useOutOfCombat;
+	useOutOfCombat,
+	delay;
 
 	command.add('au', (arg) => {
 		if(arg){
@@ -67,8 +68,8 @@ let enabled = true,
 
 	let handle = (info) => {
 		if((useOutOfCombat || dispatch.game.me.inCombat) && !dispatch.game.me.inBattleground){
-			if(useBroochOn.includes(info.skill.id) && Date.now() > brooch.cooldown) useItem(brooch.id, info.loc, info.w);
-			if(useRootBeerOn.includes(info.skill.id) && rootbeer.amount > 0 && Date.now() > rootbeer.cooldown) useItem(rootbeer.id, info.loc, info.w);
+			if(useBroochOn.includes(info.skill.id) && Date.now() > brooch.cooldown) setTimeout(useItem, delay, brooch.id, info.loc, info.w);
+			if(useRootBeerOn.includes(info.skill.id) && rootbeer.amount > 0 && Date.now() > rootbeer.cooldown) setTimeout(useItem, delay, rootbeer.id, info.loc, info.w);
 		}
 	}; 
 
@@ -76,13 +77,14 @@ let enabled = true,
         useBroochOn = skills[dispatch.game.me.class].useBroochOn;
         useRootBeerOn = skills[dispatch.game.me.class].useRootBeerOn;
         useOutOfCombat = skills[dispatch.game.me.class].useOutOfCombat;
+        delay = skills[dispatch.game.me.class].delay;
     });
 
  	dispatch.hook('C_USE_ITEM', 3, event => {
  		if(debug) console.log('ID of Item Used: ' + event.id);
  	});
 
-	dispatch.hook('S_INVEN', 14, event => {
+	dispatch.hook('S_INVEN', 16, event => {
 		if(!enabled) return;
 		const broochinfo = event.items.find(item => item.slot === 20);
 		const beer = event.items.find(item => item.id === rootbeer.id);
@@ -90,7 +92,7 @@ let enabled = true,
 		if(beer) rootbeer.amount = beer.amount;
 	});
 
-	dispatch.hook('C_START_SKILL', 6, {order: Number.NEGATIVE_INFINITY}, event => {
+	dispatch.hook('C_START_SKILL', 7, {order: Number.NEGATIVE_INFINITY}, event => {
 		if(debug){
 			const Time = new Date();
 			console.log('Time: ' + Time.getHours() + ':' + Time.getMinutes() + ' | Skill ID : ' + event.skill.id);

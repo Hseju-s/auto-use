@@ -1,13 +1,13 @@
 {
   "files": {
-    "index.js": "f4a6d4e97b6882091b4b20306e64290af06c061e57533c18cfb899fe589f7796",
+    "index.js": "835de1eae8c085c0885d589c1b706a209dc8ab920a48a070e6363aef8c0e1c68",
     "README.md": "893115937714cf101b6c04948114e45448cb3db33af5c78d4cc3d338fc52512a",
-    "skills.json":  {"overwrite": false, "hash": "4892cb7c400c702fcc4009633cd4f1ef8d86c889c5c5e95537209f66486ae8e3"}
+    "skills.json": "7b472c4973f5b1e0a14d0a0ce465aa378d6a7c726122e9572507001384037f2e"
   },
    "defs": {
 	  "C_USE_ITEM": 3,
-	  "S_INVEN": 14,
-	  "C_START_SKILL": 6,
+	  "S_INVEN": 16,
+	  "C_START_SKILL": 7,
       "S_START_COOLTIME_ITEM": 1
   }
 }
